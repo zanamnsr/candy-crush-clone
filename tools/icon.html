@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Jewel Cascade icon generator</title>
+<style>body{margin:0;background:#222;display:flex;gap:16px;flex-wrap:wrap;padding:16px}canvas{border-radius:22%;width:256px;height:256px}</style></head>
+<body>
+<!-- Renders the app icon from the same gem artwork the game uses.
+     Run tools/make-icons.py (Playwright + Chrome) to export the PNGs into /icons. -->
+<script src="../js/engine.js"></script>
+<script src="../js/gems.js"></script>
+<script>
+// Background: velvet with a warm glow and faint light rays, like the board's frame catching light.
+function background(c, S) {
+  const g = c.createRadialGradient(S * .5, S * .42, 0, S * .5, S * .5, S * .75);
+  g.addColorStop(0, '#7a2bb0'); g.addColorStop(.45, '#3d1466'); g.addColorStop(1, '#160827');
+  c.fillStyle = g; c.fillRect(0, 0, S, S);
+  c.save(); c.translate(S * .5, S * .46); c.globalCompositeOperation = 'lighter';
+  for (let i = 0; i < 12; i++) {
+    c.rotate(Math.PI / 6); c.beginPath(); c.moveTo(0, 0); c.lineTo(S * .9, -S * .07); c.lineTo(S * .9, S * .07); c.closePath();
+    c.fillStyle = `rgba(255,214,120,${i % 2 ? .035 : .06})`; c.fill();
+  }
+  const h = c.createRadialGradient(0, 0, 0, 0, 0, S * .42); h.addColorStop(0, 'rgba(255,215,130,.38)'); h.addColorStop(1, 'rgba(255,215,130,0)');
+  c.fillStyle = h; c.beginPath(); c.arc(0, 0, S * .42, 0, 7); c.fill();
+  c.restore();
+}
+function gemAt(c, ci, x, y, R, rot = 0, s = 0) {
+  c.save(); c.translate(x, y); c.rotate(rot);
+  if (s === SP.WRAP) { drawSetting(c, R); drawGem(c, ci, R * .76); } else drawGem(c, ci, R);
+  c.restore();
+}
+function drawIcon(c, S, maskable) {
+  background(c, S);
+  const k = maskable ? 0.72 : 1;           // maskable icons keep every gem inside the central safe circle
+  c.save(); c.translate(S / 2, S / 2); c.scale(k, k); c.translate(-S / 2, -S / 2);
+  // A ruby heart surrounded by four smaller cut gems, each in its own shape.
+  gemAt(c, 5, S * .24, S * .25, S * .135, -.22);
+  gemAt(c, 3, S * .77, S * .26, S * .13, .18);
+  gemAt(c, 2, S * .22, S * .76, S * .13, -.14);
+  gemAt(c, 4, S * .78, S * .76, S * .13, .12);
+  gemAt(c, 0, S * .5, S * .53, S * .275, 0);
+  glint(c, S * .5, S * .14, S * .04, .95);
+  glint(c, S * .09, S * .5, S * .028, .85);
+  glint(c, S * .91, S * .52, S * .03, .85);
+  c.restore();
+}
+window.render = (S, maskable) => { const cv = document.createElement('canvas'); cv.width = cv.height = S; drawIcon(cv.getContext('2d'), S, maskable); return cv; };
+for (const m of [false, true]) document.body.appendChild(render(512, m));
+// small-size preview
+const sm = render(48, false); sm.style.width = sm.style.height = '48px'; document.body.appendChild(sm);
+</script>
+</body>
+</html>

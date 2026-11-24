@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Jewel Cascade</title>
+<meta name="description" content="A gem-matching puzzle game: swap jewels, set off cascades and crack the frost. 36 levels, endless and time-attack modes. Works offline.">
+<meta name="theme-color" content="#1a0b2e">
+<meta name="color-scheme" content="dark">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Jewel Cascade">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="app">
+  <section id="home" class="screen active" aria-label="Home">
+    <button class="installpill" data-act="install" hidden><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Install app</button>
+    <canvas id="homeArt" aria-hidden="true"></canvas>
+    <h1 class="title">Jewel<br>Cascade</h1>
+    <p class="tag">Swap gems, set off cascades, crack the frost.</p>
+    <div class="modes col">
+      <button class="mode" data-act="map"><img data-gem="0" alt=""><span><b>Levels</b><small id="lvProg">36 levels</small></span><svg class="chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <button class="mode" data-act="endless"><img data-gem="4" alt=""><span><b>Endless</b><small id="endBest">No move limit · relax</small></span><svg class="chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <button class="mode" data-act="timed"><img data-gem="2" alt=""><span><b>Time attack</b><small id="timBest">90 seconds · score big</small></span><svg class="chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <div class="homebar col">
+      <button class="btn ghost" data-act="how">How to play</button>
+      <button class="icon" data-act="sound" aria-label="Sound" aria-pressed="true"></button>
+      <button class="icon vibonly" data-act="vib" aria-label="Vibration" aria-pressed="true"></button>
+    </div>
+  </section>
+
+  <section id="map" class="screen" aria-label="Levels">
+    <div class="topbar">
+      <button class="icon" data-act="home" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <h2>Levels</h2>
+      <div class="pill" id="starTotal"></div>
+    </div>
+    <div id="levels"></div>
+  </section>
+
+  <section id="game" class="screen" aria-label="Game">
+    <div class="hud">
+      <button class="icon" data-act="pause" aria-label="Pause"><svg viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></svg></button>
+      <div class="hudmid">
+        <div id="modeLbl">Level 1</div>
+        <div id="scoreVal">0</div>
+        <div class="bar" id="bar"><i id="barFill"></i></div>
+      </div>
+      <div class="movebox"><div id="movesVal">20</div><div id="movesLbl">moves</div></div>
+    </div>
+    <div id="goals"></div>
+    <div id="boardWrap">
+      <div id="frame"><canvas id="board" aria-label="Game board: swipe a gem to swap it with a neighbour"></canvas></div>
+      <div id="banner"><span></span></div>
+    </div>
+  </section>
+</div>
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true"><div class="card" id="card"></div></div>
+<script src="js/engine.js" defer></script>
+<script src="js/gems.js" defer></script>
+<script src="js/game.js" defer></script>
+</body>
+</html>
