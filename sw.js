@@ -1,6 +1,6 @@
 // Jewel Cascade service worker: makes the game load instantly and work offline.
 // Bump VERSION whenever you change any file in SHELL so phones pick up the update.
-const VERSION = 'v1';
+const VERSION = 'v2';
 const CACHE = `jewel-cascade-${VERSION}`;
 const FONT_CACHE = 'jewel-cascade-fonts';
 const SHELL = [
