@@ -3,15 +3,15 @@
    PICTURE: the board itself; on the home screen a floating cluster of cut gems.
    COLOUR and TYPE: deep plum velvet, gold trim, each gem its own hue; Cinzel lettering + Manrope.
    LAYOUT: one phone-width column; HUD, goals, square board filling the rest. */
-:root{color-scheme:dark;--bg:#d6337f;--bg2:#a8155e;--ink:#fff7fb;--muted:#ffe0ef;--gold:#f2c75c;--gold2:#b8862b;--panel:rgba(255,255,255,.14);--line:rgba(242,199,92,.45);
+:root{color-scheme:light;--bg:#ffd2a1;--bg2:#ffb36b;--ink:#3b1c06;--muted:#7a4416;--gold:#f2c75c;--gold2:#b8862b;--accent:#a8650f;--panel:rgba(255,255,255,.42);--line:rgba(184,134,43,.6);
   --sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;min-width:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;margin:0;overflow:hidden;overscroll-behavior:none}
-body{background:radial-gradient(120% 70% at 50% -5%,#ff8cc4 0%,#e0458f 42%,#a3155c 100%) fixed,#a3155c;color:var(--ink);font:16px/1.45 Manrope,system-ui,-apple-system,"Segoe UI",sans-serif;
+body{background:radial-gradient(120% 70% at 50% -5%,#fff1e0 0%,#ffd2a1 45%,#ffb36b 100%) fixed,#ffb36b;color:var(--ink);font:16px/1.45 Manrope,system-ui,-apple-system,"Segoe UI",sans-serif;
   -webkit-user-select:none;user-select:none;touch-action:manipulation;-webkit-touch-callout:none}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;background-image:radial-gradient(1px 1px at 12% 18%,#fff8 50%,transparent),radial-gradient(1px 1px at 78% 9%,#fff7 50%,transparent),radial-gradient(1.5px 1.5px at 64% 32%,#ffe9a666 50%,transparent),radial-gradient(1px 1px at 30% 72%,#fff5 50%,transparent),radial-gradient(1px 1px at 88% 64%,#fff6 50%,transparent),radial-gradient(1.5px 1.5px at 8% 90%,#ffe9a655 50%,transparent)}
 button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;touch-action:manipulation}
-button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 #app{position:fixed;inset:0;padding:calc(var(--sat) + 8px) calc(var(--sar) + 12px) calc(var(--sab) + 10px) calc(var(--sal) + 12px)}
 .screen{position:absolute;inset:inherit;padding:inherit;display:none;flex-direction:column;align-items:center;max-width:600px;margin:0 auto}
 .screen.active{display:flex}
@@ -27,19 +27,19 @@ h1.title{font-size:clamp(42px,13vw,64px)}
 .btn.ghost{background:var(--panel);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
 .btn.ghost:active{transform:translateY(2px)}
 .icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--panel);box-shadow:inset 0 0 0 1.5px var(--line);flex:none}
-.icon svg{width:22px;height:22px;fill:none;stroke:var(--gold);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.icon svg{width:22px;height:22px;fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .icon[aria-pressed=false] svg{stroke:#8d7aa8}
 /* home */
 #home{justify-content:center;gap:4px}
 #homeArt{width:100%;max-width:440px;height:min(38vh,320px);display:block}
 .modes{display:grid;gap:12px;margin-top:22px}
 .mode{display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:12px;text-align:left;padding:10px 16px 10px 10px;border-radius:20px;min-height:72px;
-  background:linear-gradient(180deg,rgba(120,10,60,.32),rgba(120,10,60,.18));box-shadow:inset 0 0 0 1.5px var(--line),0 8px 20px rgba(0,0,0,.25);transition:transform .08s}
+  background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.28));box-shadow:inset 0 0 0 1.5px var(--line),0 8px 20px rgba(122,68,22,.18);transition:transform .08s}
 .mode:active{transform:scale(.98)}
 .mode img{width:52px;height:52px}
 .mode b{display:block;font-size:19px;font-weight:800}
 .mode small{display:block;color:var(--muted);font-size:14px}
-.mode .chev{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:2.4}
+.mode .chev{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:2.4}
 .homebar{display:flex;gap:10px;justify-content:center;margin-top:18px}
 .homebar .btn{width:auto;flex:1;max-width:220px}
 /* install prompt */
@@ -53,7 +53,7 @@ h1.title{font-size:clamp(42px,13vw,64px)}
 .steps svg{width:20px;height:20px;vertical-align:-4px;fill:none;stroke:var(--gold);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 /* map */
 .topbar{display:flex;align-items:center;gap:12px;width:100%;max-width:520px;padding-bottom:10px}
-.topbar h2{flex:1;margin:0;font:900 26px/1 Cinzel,serif;color:var(--gold)}
+.topbar h2{flex:1;margin:0;font:900 26px/1 Cinzel,serif;color:var(--accent)}
 .pill{display:flex;align-items:center;gap:6px;font-weight:800;padding:8px 12px;border-radius:999px;background:var(--panel);box-shadow:inset 0 0 0 1.5px var(--line)}
 .pill svg{width:18px;height:18px}
 #levels{flex:1;overflow-y:auto;width:100%;max-width:520px;padding:4px 8px 24px;-webkit-overflow-scrolling:touch;touch-action:pan-y}
@@ -61,7 +61,7 @@ h1.title{font-size:clamp(42px,13vw,64px)}
 .chapter img{width:30px;height:30px}
 .chapter span{color:var(--muted);font:600 13px Manrope,sans-serif;margin-left:auto}
 .lvrow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
-.lv{aspect-ratio:1;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-weight:800;font-size:19px;
+.lv{aspect-ratio:1;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-weight:800;font-size:19px;color:#fff;
   background:linear-gradient(160deg,var(--c1),var(--c2));box-shadow:inset 0 1.5px 0 rgba(255,255,255,.35),inset 0 -3px 0 rgba(0,0,0,.25),0 4px 10px rgba(0,0,0,.3);text-shadow:0 1px 2px rgba(0,0,0,.5);min-height:44px}
 .lv .st{display:flex;gap:1px}
 .lv .st svg{width:11px;height:11px}
@@ -81,13 +81,13 @@ h1.title{font-size:clamp(42px,13vw,64px)}
 .bar b svg{width:16px;height:16px;display:block}
 .movebox{border-radius:16px;padding:6px 4px;text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.04));box-shadow:inset 0 0 0 1.5px var(--line)}
 #movesVal{font-weight:800;font-size:26px;line-height:1.05;font-variant-numeric:tabular-nums}
-#movesVal.warn{color:#ff8a8a}
+#movesVal.warn{color:#c0262d}
 #movesLbl{font-size:13px;color:var(--muted)}
 #goals{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;min-height:40px;align-items:center;width:100%}
 .goal{display:flex;align-items:center;gap:6px;padding:3px 12px 3px 4px;border-radius:999px;background:var(--panel);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);font-weight:800;font-variant-numeric:tabular-nums}
 .goal img{width:32px;height:32px}
-.goal.done{box-shadow:inset 0 0 0 1.5px var(--gold)}
-.goal.done em{color:var(--gold);font-style:normal}
+.goal.done{box-shadow:inset 0 0 0 1.5px var(--accent)}
+.goal.done em{color:var(--accent);font-style:normal}
 .goalnote{color:var(--muted);font-size:14px}
 #boardWrap{flex:none;margin-block:auto;width:100%;display:grid;place-items:center;position:relative}
 #frame{padding:6px;border-radius:22px;background:linear-gradient(145deg,#fff1b8,#c58b26 30%,#ffe08a 52%,#8a5512 78%,#f2c75c);box-shadow:0 14px 40px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.5)}
@@ -100,7 +100,7 @@ h1.title{font-size:clamp(42px,13vw,64px)}
 /* modal */
 .modal{position:fixed;inset:0;z-index:10;display:grid;place-items:center;background:rgba(8,3,16,.72);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);padding:16px}
 .modal.hidden{display:none}
-.card{width:100%;max-width:380px;max-height:calc(100dvh - 32px);overflow-y:auto;border-radius:26px;padding:24px 20px 20px;text-align:center;
+.card{--ink:#fff7fb;--muted:#ffe0ef;--accent:var(--gold);--panel:rgba(255,255,255,.14);--line:rgba(242,199,92,.45);color:var(--ink);width:100%;max-width:380px;max-height:calc(100dvh - 32px);overflow-y:auto;border-radius:26px;padding:24px 20px 20px;text-align:center;
   background:linear-gradient(180deg,#b3216c,#6e0c3f);box-shadow:inset 0 0 0 2px var(--line),0 20px 60px rgba(0,0,0,.6);animation:rise .28s cubic-bezier(.2,.9,.3,1.15)}
 @keyframes rise{from{transform:translateY(24px) scale(.94);opacity:0}}
 .card h2{font:900 30px/1.05 Cinzel,serif;margin:0 0 6px;color:var(--gold)}
